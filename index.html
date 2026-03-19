@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Nose Dodge - 鼻シューティング</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  width: 100%; height: 100%;
+  overflow: hidden;
+  background: #000;
+  touch-action: none;
+}
+#startScreen {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  background: linear-gradient(135deg, #0a0a2e, #1a1a4e);
+  z-index: 30; color: #fff; font-family: sans-serif;
+  text-align: center; padding: 20px;
+}
+#startScreen h1 {
+  font-size: 2em; margin-bottom: 10px;
+  text-shadow: 0 0 20px #0ff;
+}
+#startScreen p { font-size: 0.95em; color: #aac; margin-bottom: 20px; line-height: 1.6; }
+#startBtn {
+  padding: 16px 48px; font-size: 1.3em;
+  background: linear-gradient(135deg, #0af, #08f);
+  color: #fff; border: none; border-radius: 12px;
+  cursor: pointer; font-weight: bold;
+  box-shadow: 0 0 30px rgba(0,150,255,0.4);
+}
+#startBtn:active { transform: scale(0.95); }
+#loadingMsg { margin-top: 20px; color: #8af; display: none; }
+
+#gameCanvas {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: 10;
+}
+#cameraView {
+  position: absolute; bottom: 10px; right: 10px;
+  width: 120px; height: 90px;
+  z-index: 20; border: 2px solid rgba(0,200,255,0.5);
+  border-radius: 8px; object-fit: cover;
+  transform: scaleX(-1);
+}
+#debugDot {
+  position: absolute; width: 12px; height: 12px;
+  background: #0f0; border-radius: 50%;
+  z-index: 25; pointer-events: none; display: none;
+}
+</style>
+</head>
+<body>
+
+<div id="startScreen">
+  <h1>Nose Dodge</h1>
+  <p>鼻の動きで自機を操縦！<br>敵の砲撃を避けてスコアを稼ごう！<br><br>カメラに顔を映して鼻で操作します</p>
+  <button id="startBtn">ゲームスタート</button>
+  <div id="loadingMsg">カメラ準備中...</div>
+</div>
+
+<canvas id="gameCanvas"></canvas>
+<video id="cameraView" autoplay playsinline muted></video>
+<div id="debugDot"></div>
+
+<script type="module" src="game.js"></script>
+</body>
+</html>
