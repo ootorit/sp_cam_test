@@ -2,9 +2,8 @@
 // Nose Dodge - 鼻で操作する横スクロールシューティング
 // ============================================================
 
-// --- MediaPipe imports (CDN) ---
-import { FaceMesh } from "https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh@0.4.1633559619/face_mesh.js";
-import { Camera } from "https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.3.1640029074/camera_utils.js";
+// MediaPipe is loaded via <script> tags in index.html
+// FaceMesh available as window.FaceMesh, Camera as window.Camera
 
 // --- DOM elements ---
 const startScreen = document.getElementById("startScreen");
